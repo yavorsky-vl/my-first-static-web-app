@@ -15,7 +15,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "copy-server": "copyfiles *.js build",
+    "copy-server": "copyfiles app.js build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
