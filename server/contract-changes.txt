@@ -1,0 +1,215 @@
+"GET /v1/report/{personnelNumber}/reportCreation" => "GET /v1/report/reportCreation": 
+"parameters": [
+ /// --- removed ----
+    {
+            "name": "personnelNumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+ /// --- removed ----
+    {
+        "name": "enableReplica",
+        "in": "query",
+        "schema": {
+        "type": "boolean",
+        "default": false
+        }
+    }
+
+"POST /v1/report/isCustomReportNameExist/{customReportName}/{userId}" => "POST /v1/report/isCustomReportNameExist"
+new body request
+{
+    "reportName": "string"
+}
+ 
+
+"POST /v1/report/IsCustomReportNameExistonUpdate/{reportId}/{customReportName}/{userId}" =>  "POST /v1/report/IsCustomReportNameExistonUpdate":
+new body request 
+{
+    "reportId": "GUID",
+    "customReportName": "string"
+}
+ 
+
+"GET /v1/report/Getreport/{reportId}/{userId}" =>  "GET /v1/report/Getreport/{reportId}"
+
+
+"GET /v1/report/DisableReport/{reportId}" => "POST /v1/report/DisableReport"
+new body request
+{
+    "reportName": "string"
+}
+
+"POST /v1/report/GetReportNameCount/{defaultReportName}/{userId}" => "POST /v1/report/GetReportNameCount"
+new body request
+{
+    "reportName": "string"
+}
+
+
+"POST /v1/favorite/deleteReportUserFavorites/{userId}/{reportId}" => "POST /v1/favorite/deleteReportUserFavorites"
+new body request
+{
+    "reportId": "GUID"
+}
+
+
+"POST /v1/wbs/clientName/{wbsId}" => "POST /v1/wbs/clientName"
+new body request
+{
+    "wbsId": "GUID"
+}
+
+"POST /v1/wbs/accessToWbs/{reportId}/{personnelNumber}" => "POST /v1/wbs/accessToWbs"
+new body request
+{
+    "reportId": "GUID"
+}
+
+"POST /v1/wbs/user/{userId}/default" => "POST /v1/wbs/assign/default"
+NO body request
+
+add new "POST /v1/wbs/assign/new"
+{
+    "codes": [
+      "string"
+    ],
+    "userId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+  }
+
+
+
+add new "/v1/workspaceManagement/{workspaceManagementId}/projectApprovers"
+respose 
+[
+    {
+      "fullName": "string",
+      "emailAddress": "string",
+      "role": "string",
+      "userId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+    }
+  ]
+
+"PATCH /v1/workspaceManagement/"
+WorkspaceManagementSaveDetailedDto
+new properties in body
+{
+
+    ....
+    "workspaces": [
+        {
+         ....
+          "budgetedHours": 0,
+          "estimateToCompletion": 0,
+          "workspaceFlags": [
+            {
+              "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+              "workspaceId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+              "workspaceFlagTypeId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+            }
+          ]
+        }
+      ],
+
+    ...
+      "workspaceGroupingFlags": [
+        {
+          "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "workspaceGroupingId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "workspaceFlagTypeId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+        }
+      ]
+}
+
+new in response 
+{
+    ...
+    "reportId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "rowVersionLong": 0,
+    "engagements": [
+      {
+        ....
+        "clientName": "string",
+        "omniaTimestamp": {
+          "lastUpdateFromOmnia": "2024-07-31T12:35:27.860Z",
+          "nextUpdateFromOmnia": "2024-07-31T12:35:27.860Z"
+        },
+        "hasAccess": true
+      }
+    ]
+    "workspaceGroupings": [
+        "workspaces": [
+            {
+               ....
+              "budgetedHoursByWorkItemTotal": 0,
+              "budgetedHours": 0,
+              "estimateToCompletion": 0,
+              "engagementId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+              "engagementName": "string",
+              "readOnly": true,
+              "hasAdvanced": true,
+              "workspaceFlags": [
+                {
+                  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                  "name": "string",
+                  "shortName": "string",
+                  "description": "string",
+                  "order": 0
+                }
+              ]
+            }
+          ],
+    "workspaceGroupingPermission": {
+        "hasAccessToAllWorkspaces": true,
+        "hasRealAdvanced": true, - removed
+        "budgetAllocation": 0,- removed
+        "actuals": 0, - removed
+        "eac": 0 - removed
+      },
+      .....
+    "totalEngagementCount": 0,
+    "workspaceGroupingFlags": [
+        {
+          "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "name": "string",
+          "shortName": "string",
+          "description": "string",
+          "order": 0
+        }
+      ]
+    ]
+    ...
+    "listReportedHours": [ - removed
+        {
+          "level4WbsId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "hours": 0
+        }
+    ],
+    "level4WbsIds": [
+        {
+...
+          "isCurrent": true,
+...
+        }
+    ],
+    "managementLevel": 0,
+    "permissions": {
+        "isPermissionManager": true,
+        "isBasicOverall": true,
+        "hasL1WbsAccess": true,
+        "canSave": true,
+        "canPushEacToPriorHistory": true,
+        "canLockUnlock": true,
+        "totalsPermission": {
+        "showBudgetAllocation": true,
+        "showActuals": true,
+        "showETC": true,
+        "showEAC": true,
+        "showBudgetedHours": true,
+        "showPriorEAC": true
+        }
+    }
+}
